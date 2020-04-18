@@ -1,0 +1,265 @@
+@import 'mixins';
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Martel', serif;
+  cursor: url(icons8-filled-circle-32.png), default;
+}
+
+header {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+
+  h1 {
+    text-align: center;
+    font-size: 3.5em;
+    letter-spacing: 3px;
+    line-height: 1.4;
+    margin: auto;
+    padding-bottom: 40px;
+  background: linear-gradient(to right,  rgba(98, 138, 138, 0.8), #fff);
+
+
+
+    span {
+      color: $headerColor;
+      font-size: 1.2em;
+      vertical-align: middle;
+    }
+  }
+
+  .header-nav {
+    margin: 0 auto;
+    padding-top: 0;
+    display: flex;
+    justify-content: center;
+
+
+
+    ul {
+      display: flex;
+      border-top: 2px solid black;
+      border-bottom: 2px solid black;
+      justify-content: center;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      margin: auto 30px;
+      padding: 5px 0;
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+      color: #333;
+      font-size: 18px;
+
+      &:hover {
+        color: $headerColor;
+        transition: 0.5s;
+        cursor: url(icons8-filled-circle-32.png), default;
+      }
+    }
+  }
+
+  .wrap-menu {
+    display: none;
+    position: relative;
+
+
+    li {
+      padding: 0;
+      margin: 5px 0;
+      position: relative;
+      right: 27px;
+
+      &:hover {
+        background: #333;
+      }
+    }
+
+    a:hover {
+      color: white;
+    }
+
+    ul {
+      margin-top: 5px;
+      padding-top: 10px;
+      border: none;
+
+    }
+  }
+
+  .header-nav ul li:hover .wrap-menu {
+    display: block;
+    position: absolute;
+    height: auto;
+
+  }
+
+  .header-nav ul li:hover .wrap-menu ul {
+    display: block;
+
+  }
+}
+//article
+@media screen and (max-width: 1080px) {
+  article {
+    display: block;
+
+    #margin {
+      margin-top: 30px;
+    }
+
+    .content {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      width: 100%;
+      margin: 100px auto auto;
+      padding: 0;
+
+      .content-item {
+        img {
+          @include contentImg;
+        }
+      }
+
+      .content-item-1 {
+        width: 400px;
+        height: auto;
+        margin: 30px 20px 10px;
+        padding: 25px 25px 0;
+        box-sizing: border-box;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+
+        h1 {
+          text-align: center;
+          @include articleH1;
+        }
+
+        p {
+          line-height: 1.8;
+          text-align: center;
+        }
+      }
+    }
+  }
+  //article 2
+  .content1 {
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+    width: 100%;
+    margin: 30px auto auto;
+    padding: 0;
+
+    .content1-item {
+      img {
+        @include contentImg;
+      }
+    }
+
+    .content1-item-1 {
+      @include contentItem;
+      border-top: 1px solid black;
+      border-bottom: 1px solid black;
+      margin-top: 30px;
+
+      h1 {
+        text-align: center;
+        @include articleH1;
+      }
+
+      p {
+        line-height: 1.8;
+        text-align: center;
+      }
+    }
+  }
+}
+//media
+@media screen and (min-width: 1080px) {
+  header {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+
+  }
+
+  article {
+    display: block;
+
+    .content {
+      @include content;
+      margin-top: 100px;
+
+      .content-item {
+        img {
+          @include contentImg;
+          transition:  0.3s;
+
+          &:hover {
+            transform: rotate3d(1, 1, 0, 25deg);
+            box-shadow: 20px -15px 15px grey;
+
+          }
+
+        }
+      }
+
+      .content-item-1 {
+        @include contentItem;
+        border-left: 1px solid black;
+
+        h1 {
+          text-align: left;
+          @include articleH1;
+        }
+
+        p {
+          line-height: 1.8;
+          text-align: left;
+        }
+      }
+    }
+    //article 2
+    .content1 {
+      @include content;
+      margin-top: 100px;
+
+      .content1-item {
+        img {
+          @include contentImg;
+          transition:  0.3s;
+
+          &:hover {
+            transform: rotate3d(1, -1, 0, 25deg);
+            box-shadow: -20px -15px 15px grey;
+          }
+        }
+      }
+
+      .content1-item-1 {
+        @include contentItem;
+        border-right: 1px solid black;
+
+        h1 {
+          text-align: right;
+          @include articleH1;
+        }
+
+        p {
+          line-height: 1.8;
+          text-align: right;
+        }
+      }
+    }
+  }
+}
